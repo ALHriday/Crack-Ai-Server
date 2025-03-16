@@ -26,10 +26,9 @@ app.get('/test-ai', async(req, res)=>{
     }
     const result = await model.generateContent(prompt);
     const finalData = result.response.text();
-    // console.log();
     const output = finalData.replace(/\*/g, "");
-    
-    res.send(output);
+    const finalOutput = output.replace(/(\d+\.)/g, '\n$1');
+    res.send(finalOutput);
 })
 
 
